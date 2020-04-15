@@ -10,48 +10,45 @@ namespace SolidApi.Infrastructure
 {
     public class TextCounter//a
     {
-        public Hashtable CountWordsInString(string text)
+        private readonly ITextProvider wordsProvider;
+
+        public TextCounter(ITextProvider textProvider)
         {
+            this.wordsProvider = textProvider;
+        }
+
+        /*
+         * zrobic words provider ktory zwroci podzielona slowa
+         * wyodrebnic dzielenie slow do innego interfejsu i napisac tescik -> IWordsSpliter ITextPr
+         * napisac test do wordsProvidera
+         */
+
+        public async Task<IDictionary<string, int>> CountWordsInTextAsync(string url)
+        {
+            var text = await wordsProvider.GetTextAsync(url).ConfigureAwait(false);
+
             char[] delimiterChars = { ' ', ',', '.', ':', '\t','!','?','\r','\n','-','/','"','1','2','3','4','5','6','7','8','9','0','\'','\\','(',')','„','”'};
-            Hashtable hashtableOfWordAsKeyAndNumberOfOccursOfTheWord = new Hashtable();
+            var dictionaryOfWordAsKeyAndNumberOfOccursOfTheWord = new Dictionary<string, int>();
             string [] wordsInString =text.Split(delimiterChars);
-            foreach(string word in wordsInString)
+            foreach(var word in wordsInString)
             {
                 if (word != null && word!="")
                 {
-                    if (hashtableOfWordAsKeyAndNumberOfOccursOfTheWord.ContainsKey(word))
+                    if (dictionaryOfWordAsKeyAndNumberOfOccursOfTheWord.ContainsKey(word))
                     {
-                        hashtableOfWordAsKeyAndNumberOfOccursOfTheWord[word] = (int)hashtableOfWordAsKeyAndNumberOfOccursOfTheWord[word] + 1;
+                        dictionaryOfWordAsKeyAndNumberOfOccursOfTheWord[word] = dictionaryOfWordAsKeyAndNumberOfOccursOfTheWord[word] + 1;
                     }
                     else
                     {
-                        hashtableOfWordAsKeyAndNumberOfOccursOfTheWord[word] = 1;
+                        dictionaryOfWordAsKeyAndNumberOfOccursOfTheWord[word] = 1;
                     }
                 }
             }
 
-            return hashtableOfWordAsKeyAndNumberOfOccursOfTheWord;
+            return dictionaryOfWordAsKeyAndNumberOfOccursOfTheWord;
 
         }
 
-        public async Task<string> GetDataFromWebPage(string urlToWebPage)
-        {
-            using (HttpClient client = new HttpClient())
-            {
-                try {
-                    HttpResponseMessage response = await client.GetAsync(urlToWebPage);
-                    response.EnsureSuccessStatusCode();
-                    string responseBody = await response.Content.ReadAsStringAsync();
-                    return responseBody;
-                } 
-                catch (HttpRequestException e)
-                {
-                    Console.WriteLine("bład {0}",e.Message);
-                    return "blad";
-                }
-            
-
-            }
-        }
+        
     }
 }
