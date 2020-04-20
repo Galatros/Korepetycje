@@ -15,8 +15,8 @@ namespace SolidApi.Infrastructure
 
         public async Task<string> GetAsync(string url)
         {
-            using (HttpClient client = new HttpClient()) //to jest dobre
-            //using (HttpClient client = httpClientFactory.CreateClient()) //a to jest lepsze w net core - optymalizacja procka
+            // using (HttpClient client = new HttpClient()) //to jest dobre
+            using (HttpClient client = httpClientFactory.CreateClient()) //a to jest lepsze w net core - optymalizacja procka
             {
                 try
                 {

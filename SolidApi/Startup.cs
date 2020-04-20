@@ -27,7 +27,7 @@ namespace SolidApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<SolidApi.Infrastructure.TextCounter>();
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -35,7 +35,15 @@ namespace SolidApi
             });
             services.AddHttpClient();
 
+            services.AddTransient<SolidApi.Infrastructure.TextCounter>();
+            services.AddScoped<IWordsProvider, HttpWordsProvider>();
+            services.AddScoped<IWordsSplitter, WordsSplitter>();
+            services.AddScoped<ITextProvider, HttpTextProvider>();
             services.AddScoped<IHttpClientWrapper, HttpClientWrapper>();
+         
+         
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -58,14 +66,14 @@ namespace SolidApi
 
             app.UseAuthorization();
 
-         
+
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
 
-           
+
         }
     }
 }

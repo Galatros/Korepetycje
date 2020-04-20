@@ -25,17 +25,17 @@ namespace TestSolidApi
             return fixture.Create<TextCounter>();
         }
 
-        [TestCase("kotek, œwinka. pingwin! pingwin?")]
-        [TestCase("kotek pingwin pingwin œwinka")]
-        public async Task CountWordsInTextAsync_WhenSomeTextProvided_ThenItShoudCountWords(string text)
+       
+        [TestCase(new object[] {"pingwin","pingwin","kaczka"})]
+        public async Task CountWordsInTextAsync_WhenTabOfWordsProvided_ThenItShoudCountWords(params string[] text)
         {
             //arange
-            var textProvider = new Mock<ITextProvider>();
-            textProvider.Setup(tp => tp.GetTextAsync(It.IsNotNull<string>())).ReturnsAsync(text);
-            fixture.Inject(textProvider);
+            var wordsProvider = new Mock<IWordsProvider>();
+            wordsProvider.Setup(tp => tp.GetWordsAsync(It.IsNotNull<string>())).ReturnsAsync(text);
+            fixture.Inject(wordsProvider);
             var sut = CreateSut();
 
-            var resultHashtable = await sut.CountWordsInTextAsync(text).ConfigureAwait(false);
+            var resultHashtable = await sut.CountWordsInTextAsync("nic").ConfigureAwait(false); //CO DAÆ TU JAKO PARAMETR?
             //act
             //Assert.AreEqual(2, resultHashtable["pingwin"]); //dobrze
             resultHashtable["pingwin"].Should().Be(2);//taki sam efekt

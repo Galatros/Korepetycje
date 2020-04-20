@@ -10,11 +10,11 @@ namespace SolidApi.Infrastructure
 {
     public class TextCounter//a
     {
-        private readonly ITextProvider wordsProvider;
+        private readonly IWordsProvider wordsProvider;
 
-        public TextCounter(ITextProvider textProvider)
+        public TextCounter(IWordsProvider wordsProvider)
         {
-            this.wordsProvider = textProvider;
+            this.wordsProvider = wordsProvider;
         }
 
         /*
@@ -25,30 +25,24 @@ namespace SolidApi.Infrastructure
 
         public async Task<IDictionary<string, int>> CountWordsInTextAsync(string url)
         {
-            var text = await wordsProvider.GetTextAsync(url).ConfigureAwait(false);
-
-            char[] delimiterChars = { ' ', ',', '.', ':', '\t','!','?','\r','\n','-','/','"','1','2','3','4','5','6','7','8','9','0','\'','\\','(',')','„','”'};
+            var wordsInString = await wordsProvider.GetWordsAsync(url).ConfigureAwait(false);
             var dictionaryOfWordAsKeyAndNumberOfOccursOfTheWord = new Dictionary<string, int>();
-            string [] wordsInString =text.Split(delimiterChars);
-            foreach(var word in wordsInString)
+
+            foreach (var word in wordsInString)
             {
-                if (word != null && word!="")
+                if (dictionaryOfWordAsKeyAndNumberOfOccursOfTheWord.ContainsKey(word))
                 {
-                    if (dictionaryOfWordAsKeyAndNumberOfOccursOfTheWord.ContainsKey(word))
-                    {
-                        dictionaryOfWordAsKeyAndNumberOfOccursOfTheWord[word] = dictionaryOfWordAsKeyAndNumberOfOccursOfTheWord[word] + 1;
-                    }
-                    else
-                    {
-                        dictionaryOfWordAsKeyAndNumberOfOccursOfTheWord[word] = 1;
-                    }
+                    dictionaryOfWordAsKeyAndNumberOfOccursOfTheWord[word] = dictionaryOfWordAsKeyAndNumberOfOccursOfTheWord[word] + 1;
+                }
+                else
+                {
+                    dictionaryOfWordAsKeyAndNumberOfOccursOfTheWord[word] = 1;
                 }
             }
-
             return dictionaryOfWordAsKeyAndNumberOfOccursOfTheWord;
 
         }
 
-        
+
     }
 }

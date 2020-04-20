@@ -15,18 +15,19 @@ namespace SolidApi.Infrastructure
     public class HttpTextProvider : ITextProvider
     {
         private readonly IHttpClientWrapper httpClient;
-        private readonly IWordsSplitter wordsSplitter;
+      //  private readonly IWordsSplitter wordsSplitter;
 
-        public HttpTextProvider(IHttpClientWrapper httpClient, IWordsSplitter wordsSplitter)
+        public HttpTextProvider(IHttpClientWrapper httpClient)
         {
             this.httpClient = httpClient;
-            this.wordsSplitter = wordsSplitter;
+          //  this.wordsSplitter = wordsSplitter;
         }
 
         public async Task<string> GetTextAsync(string urlToWebPage)
         {
             var response = await httpClient.GetAsync(urlToWebPage).ConfigureAwait(false);
-            return wordsSplitter.SplitWords(text);
+            //var result = wordsSplitter.SplitWordsInString(response);
+            return response;
         }
     }
 }

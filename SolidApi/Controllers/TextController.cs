@@ -24,7 +24,7 @@ namespace SolidApi.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var result=textCounter.CountWordsInTextAsync(url);
+            var result= await textCounter.CountWordsInTextAsync(url);
             return Ok(result);
         }
 
