@@ -1,7 +1,7 @@
-﻿using SolidApi.Interfaces;
+﻿using SolidApi.Logic.RentalAuthenticator.Interfaces;
 using SolidApi.Repository.DataBaseFiles;
 
-namespace SolidApi.Classes
+namespace SolidApi.Logic.RentalAuthenticator
 {
     public class BookInfoProvider : IBookInfoProvider
     {

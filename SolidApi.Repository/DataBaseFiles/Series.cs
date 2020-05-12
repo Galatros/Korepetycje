@@ -4,14 +4,10 @@ namespace SolidApi.Repository.DataBaseFiles
 {
     public class Series
     {
-        private Dictionary<string, string> series;
-
-        public Series()
-        {
-            series = new Dictionary<string, string>();
-            series.Add("Pan Wołodyjowski", "Fitness");
-            series.Add("Botoks", "PomiarMet");
-
-        }
+        public IDictionary<string, string> SeriesDictionary = new Dictionary<string, string>
+            {
+                { "Pan Wołodyjowski", "Fitness" },
+                { "Botoks", "PomiarMet" }
+            };
     }
 }

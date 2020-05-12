@@ -2,11 +2,8 @@
 using AutoFixture.AutoMoq;
 using FluentAssertions;
 using NUnit.Framework;
-using SolidApi.Infrastructure;
-using System;
-using System.Collections.Generic;
+using SolidApi.Logic.TextAdministrator;
 using System.Linq;
-using System.Text;
 
 namespace TestSolidApi
 {

@@ -1,8 +1,9 @@
-﻿using System;
+﻿using SolidApi.Logic.TextAdministrator.Interfaces;
+using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace SolidApi.Infrastructure
+namespace SolidApi.Logic.TextAdministrator
 {
     public class HttpClientWrapper : IHttpClientWrapper
     {

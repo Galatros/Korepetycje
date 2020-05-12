@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace SolidApi.Infrastructure
+namespace SolidApi.Logic.TextAdministrator.Interfaces
 {
     public interface IHttpClientWrapper
     {

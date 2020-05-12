@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using SolidApi.Logic.Logger.Interfaces;
+using System;
 
-namespace SolidApi.Infrastructure.Logger
+namespace SolidApi.Logic.Logger
 {
     public class FileLogger : IMyLogger
     {

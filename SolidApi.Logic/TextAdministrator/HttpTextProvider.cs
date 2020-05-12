@@ -1,26 +1,27 @@
-﻿using System;
+﻿using SolidApi.Logic.TextAdministrator.Interfaces;
+using System;
 using System.Threading.Tasks;
 
-namespace SolidApi.Infrastructure
+namespace SolidApi.Logic.TextAdministrator
 {
     class FileTextProvider : ITextProvider
     {
         // jakas inna implementacja interfejsu - na przyklad z pliku na dysku
         public Task<string> GetTextAsync(string urlToWebPage)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 
     public class HttpTextProvider : ITextProvider
     {
         private readonly IHttpClientWrapper httpClient;
-      //  private readonly IWordsSplitter wordsSplitter;
+        //  private readonly IWordsSplitter wordsSplitter;
 
         public HttpTextProvider(IHttpClientWrapper httpClient)
         {
             this.httpClient = httpClient;
-          //  this.wordsSplitter = wordsSplitter;
+            //  this.wordsSplitter = wordsSplitter;
         }
 
         public async Task<string> GetTextAsync(string urlToWebPage)

@@ -1,4 +1,4 @@
-﻿namespace SolidApi.Infrastructure.Logger
+﻿namespace SolidApi.Logic.Logger.Interfaces
 {
     public interface IMyLoggerFactory
     {

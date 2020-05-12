@@ -1,14 +1,12 @@
 ﻿using AutoFixture;
 using AutoFixture.AutoMoq;
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using SolidApi.Infrastructure;
-using Moq;
-using System.Threading.Tasks;
 using FluentAssertions;
+using Moq;
+using NUnit.Framework;
+using SolidApi.Logic.TextAdministrator;
+using SolidApi.Logic.TextAdministrator.Interfaces;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace TestSolidApi
 {
@@ -35,7 +33,7 @@ namespace TestSolidApi
             fixture.Inject(textProvider);
 
             var spliter = fixture.Freeze<Mock<IWordsSplitter>>();
-            spliter.Setup(s => s.SplitWordsInString(It.IsNotNull<string>())).Returns(new[] { "woda" ,"ogien"});
+            spliter.Setup(s => s.SplitWordsInString(It.IsNotNull<string>())).Returns(new[] { "woda", "ogien" });
 
             spliter.Verify(s => s.SplitWordsInString(It.IsNotNull<string>()), Times.Once);
 

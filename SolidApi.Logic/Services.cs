@@ -1,7 +1,10 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using SolidApi.Classes;
-using SolidApi.Interfaces;
-using SolidApi.RentalAuthenticator;
+using SolidApi.Logic.Logger;
+using SolidApi.Logic.Logger.Interfaces;
+using SolidApi.Logic.RentalAuthenticator;
+using SolidApi.Logic.RentalAuthenticator.Interfaces;
+using SolidApi.Logic.TextAdministrator;
+using SolidApi.Logic.TextAdministrator.Interfaces;
 
 namespace SolidApi
 {
@@ -9,11 +12,19 @@ namespace SolidApi
     {
         public static IServiceCollection AddLogicServices(this IServiceCollection services)
         {
+
             services.AddScoped<IArtAuthenticator, BookAuthenticator>();
             services.AddScoped<IBookInfoProvider, BookInfoProvider>();
             services.AddScoped<IUserAuthenticator, UserAuthenticator>();
             services.AddScoped<IUserInfoProvider, UserInfoProvider>();
             services.AddScoped<IMyFactory, MyFactory>();
+            services.AddTransient<TextCounter>();
+            services.AddScoped<IWordsProvider, HttpWordsProvider>();
+            services.AddScoped<IWordsSplitter, WordsSplitter>();
+            services.AddScoped<ITextProvider, HttpTextProvider>();
+            services.AddScoped<IMyLoggerFactory, MyLoggerFactory>();
+            services.AddScoped<IMyLogger, ConsoleLogger>();
+            services.AddScoped<IMyLogger, FileLogger>();
 
             return services;
         }

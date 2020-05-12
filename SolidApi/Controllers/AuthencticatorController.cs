@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SolidApi.Infrastructure.Logger;
-using SolidApi.Interfaces;
+using SolidApi.Logic.Logger.Interfaces;
+using SolidApi.Logic.RentalAuthenticator.Interfaces;
 using System.Threading.Tasks;
 
 namespace SolidApi.Controllers

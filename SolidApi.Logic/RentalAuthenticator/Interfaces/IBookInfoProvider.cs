@@ -1,4 +1,4 @@
-﻿namespace SolidApi.Interfaces
+﻿namespace SolidApi.Logic.RentalAuthenticator.Interfaces
 {
     public interface IBookInfoProvider
     {

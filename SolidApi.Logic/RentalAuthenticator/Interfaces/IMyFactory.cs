@@ -1,6 +1,4 @@
-﻿using SolidApi.Interfaces;
-
-namespace SolidApi.Classes
+﻿namespace SolidApi.Logic.RentalAuthenticator.Interfaces
 {
     public interface IMyFactory
     {

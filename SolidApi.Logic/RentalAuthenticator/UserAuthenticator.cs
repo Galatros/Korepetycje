@@ -1,6 +1,6 @@
-﻿using SolidApi.Interfaces;
+﻿using SolidApi.Logic.RentalAuthenticator.Interfaces;
 
-namespace SolidApi.Classes
+namespace SolidApi.Logic.RentalAuthenticator
 {
     public class UserAuthenticator : IUserAuthenticator
     {

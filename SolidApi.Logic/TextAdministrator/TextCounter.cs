@@ -1,12 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections;
+﻿using SolidApi.Logic.TextAdministrator.Interfaces;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace SolidApi.Infrastructure
+namespace SolidApi.Logic.TextAdministrator
 {
     public class TextCounter//a
     {

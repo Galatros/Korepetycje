@@ -1,12 +1,12 @@
-﻿using SolidApi.Interfaces;
+﻿using SolidApi.Logic.RentalAuthenticator.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace SolidApi.Classes
+namespace SolidApi.Logic.RentalAuthenticator
 {
     public sealed class MyFactory : IMyFactory
-    {//as
+    {
         private readonly IEnumerable<IArtAuthenticator> authenticators;
 
         public MyFactory(IEnumerable<IArtAuthenticator> authenticators)
@@ -17,8 +17,8 @@ namespace SolidApi.Classes
         public IArtAuthenticator CreateArtAuthenticator(string artType)
         {
             var artAuthenticator = authenticators.FirstOrDefault(a => a.Type.ToUpperInvariant() == artType.ToUpperInvariant());
-            if( artAuthenticator != null)
-            return artAuthenticator;
+            if (artAuthenticator != null)
+                return artAuthenticator;
             else
             {
                 throw new NotImplementedException($"Nie ma zarjestrowanego autntykatora dla {artType}");

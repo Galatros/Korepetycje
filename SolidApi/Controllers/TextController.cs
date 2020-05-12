@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Microsoft.AspNetCore.Mvc;
+using SolidApi.Logic.Logger.Interfaces;
+using SolidApi.Logic.TextAdministrator;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using SolidApi.Infrastructure;
-using SolidApi.Infrastructure.Logger;
 
 namespace SolidApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TextController : ControllerBase 
+    public class TextController : ControllerBase
     {
         private readonly TextCounter textCounter;
         private IMyLogger logger;
@@ -28,7 +23,7 @@ namespace SolidApi.Controllers
         public async Task<IActionResult> Get()
         {
             logger.Log("Hello world!");
-            var result= await textCounter.CountWordsInTextAsync(url);
+            var result = await textCounter.CountWordsInTextAsync(url);
             return Ok(result);
         }
 

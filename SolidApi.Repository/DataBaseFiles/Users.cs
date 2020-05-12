@@ -4,11 +4,7 @@ namespace SolidApi.Repository.DataBaseFiles
 {
     public class Users
     {
-        public Dictionary<string, string> users;
-
-        public Users()
-        {
-            users = new Dictionary<string, string>
+        public IDictionary<string, string> UsersDictionary = new Dictionary<string, string>
             {
                 { "Jan Kowalski", "PomiarMet" },
                 { "Jan Banaś", "PomiarMet" },
@@ -16,6 +12,6 @@ namespace SolidApi.Repository.DataBaseFiles
                 { "Imię Naziwsko", "ElektroMetal" },
                 { "Jakub Bednarek", "ElektroMetal" }
             };
-        }
+
     }
 }

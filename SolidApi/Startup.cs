@@ -4,11 +4,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using SolidApi.Classes;
-using SolidApi.Infrastructure;
-using SolidApi.Infrastructure.Logger;
-using SolidApi.Interfaces;
-using SolidApi.RentalAuthenticator;
+using SolidApi.Logic.TextAdministrator;
+using SolidApi.Logic.TextAdministrator.Interfaces;
 using System;
 
 namespace SolidApi
@@ -32,6 +29,7 @@ namespace SolidApi
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
             });
             services.AddHttpClient();
+            services.AddScoped<IHttpClientWrapper, HttpClientWrapper>();
             services.AddServices();
         }
 

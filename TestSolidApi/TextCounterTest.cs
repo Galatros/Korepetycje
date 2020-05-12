@@ -3,7 +3,8 @@ using AutoFixture.AutoMoq;
 using FluentAssertions;
 using Moq;
 using NUnit.Framework;
-using SolidApi.Infrastructure;
+using SolidApi.Logic.TextAdministrator;
+using SolidApi.Logic.TextAdministrator.Interfaces;
 using System.Collections;
 using System.Threading.Tasks;
 

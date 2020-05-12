@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections;
+﻿using SolidApi.Logic.TextAdministrator.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SolidApi.Infrastructure
+namespace SolidApi.Logic.TextAdministrator
 {
     public class HttpWordsProvider : IWordsProvider
     {

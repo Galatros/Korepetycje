@@ -1,6 +1,6 @@
-﻿using SolidApi.Interfaces;
+﻿using SolidApi.Logic.RentalAuthenticator.Interfaces;
 
-namespace SolidApi.RentalAuthenticator
+namespace SolidApi.Logic.RentalAuthenticator
 {
     public class BookAuthenticator : IArtAuthenticator
     {

@@ -1,14 +1,14 @@
-﻿using SolidApi.Interfaces;
+﻿using SolidApi.Logic.RentalAuthenticator.Interfaces;
 using SolidApi.Repository.DataBaseFiles;
 
-namespace SolidApi.Classes
+namespace SolidApi.Logic.RentalAuthenticator
 {
     public class UserInfoProvider : IUserInfoProvider
     {
         public string GetUserInfo(string name)
         {
             var users = new Users();
-            var result = users.users[name];
+            var result = users.UsersDictionary[name];
             return result;
         }
     }

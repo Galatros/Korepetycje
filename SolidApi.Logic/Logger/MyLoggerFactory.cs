@@ -1,7 +1,7 @@
-﻿using System.Collections;
+﻿using SolidApi.Logic.Logger.Interfaces;
 using System.Collections.Generic;
 
-namespace SolidApi.Infrastructure.Logger
+namespace SolidApi.Logic.Logger
 {
     public class MyLoggerFactory : IMyLoggerFactory
     {
