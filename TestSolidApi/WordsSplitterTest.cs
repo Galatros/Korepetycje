@@ -5,6 +5,7 @@ using NUnit.Framework;
 using SolidApi.Infrastructure;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace TestSolidApi
@@ -30,7 +31,7 @@ namespace TestSolidApi
         {
             var sut = CreateSut();
             var result = sut.SplitWordsInString(text);
-            result.Length.Should().Be(4);
+            result.Count().Should().Be(4);
         }
 
     }

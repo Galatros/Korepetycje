@@ -7,6 +7,6 @@ namespace SolidApi.Infrastructure
 {
     public interface IWordsProvider
     {
-       Task<string[]> GetWordsAsync(string urlToWebPage);
+       Task<IEnumerable<string>> GetWordsAsync(string urlToWebPage);
     }
 }

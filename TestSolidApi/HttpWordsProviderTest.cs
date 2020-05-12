@@ -8,6 +8,7 @@ using SolidApi.Infrastructure;
 using Moq;
 using System.Threading.Tasks;
 using FluentAssertions;
+using System.Linq;
 
 namespace TestSolidApi
 {
@@ -26,20 +27,24 @@ namespace TestSolidApi
             return fixture.Create<HttpWordsProvider>();
         }
 
-        [TestCase("kaczka; pingwin? dziobak, dziobak!")]
-        public async Task GetWordsAsync_WhenSomeTextProvided_ThenItShouldReturnTabOfWords(string text)
+        [Test]
+        public async Task GetWordsAsync_WhenSomeTextProvided_ThenItShouldReturnTabOfWords()
         {
             var textProvider = new Mock<ITextProvider>();
-            textProvider.Setup(tp => tp.GetTextAsync(It.IsNotNull<string>())).ReturnsAsync(text);
+            textProvider.Setup(tp => tp.GetTextAsync(It.IsNotNull<string>())).ReturnsAsync("cos");
             fixture.Inject(textProvider);
 
-         
+            var spliter = fixture.Freeze<Mock<IWordsSplitter>>();
+            spliter.Setup(s => s.SplitWordsInString(It.IsNotNull<string>())).Returns(new[] { "woda" ,"ogien"});
+
+            spliter.Verify(s => s.SplitWordsInString(It.IsNotNull<string>()), Times.Once);
 
             var sut = CreateSut();
 
             var result = await sut.GetWordsAsync("nic").ConfigureAwait(false);
-
-            result.Length.Should().Be(4);
+            var count = result.Count();
+            result.Any();
+            count.Should().Be(2);
 
         }
     }

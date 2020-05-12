@@ -1,35 +1,31 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using SolidApi.Infrastructure;
+﻿using Microsoft.AspNetCore.Mvc;
 using SolidApi.Infrastructure.Logger;
+using SolidApi.Interfaces;
+using System.Threading.Tasks;
 
 namespace SolidApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TextController : ControllerBase 
+    public class AuthencticatorController : ControllerBase
     {
-        private readonly TextCounter textCounter;
+        private readonly IUserAuthenticator userAuthenticator;
         private IMyLogger logger;
-        private const string url = "https://wolnelektury.pl/media/book/txt/calineczka.txt";
 
-        public TextController(TextCounter textCounter, IMyLoggerFactory loggerFactory)
+        public AuthencticatorController(IUserAuthenticator userAuthenticator, IMyLoggerFactory loggerFactory)
         {
-            this.textCounter = textCounter;
             this.logger = loggerFactory.CreateMyLogger<TextController>();
+            this.userAuthenticator = userAuthenticator;
         }
 
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            logger.Log("Hello world!");
-            var result= await textCounter.CountWordsInTextAsync(url);
-            return Ok(result);
+            var result = userAuthenticator.AuthenticateUser("Jan Kowalski", "book", "Pan Wołodyjowski");
+            if (result)
+                return Ok();
+            else
+                return BadRequest();
         }
 
         //[Route("api/bla")]

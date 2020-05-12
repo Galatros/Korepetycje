@@ -7,6 +7,6 @@ namespace SolidApi.Infrastructure
 {
     public interface IWordsSplitter
     {
-        string[] SplitWordsInString(string text);
+        IEnumerable<string> SplitWordsInString(string text);
     }
 }
