@@ -1,7 +1,9 @@
-﻿namespace SolidApi.Logic.RentalAuthenticator.Interfaces
+﻿using System.Threading.Tasks;
+
+namespace SolidApi.Logic.RentalAuthenticator.Interfaces
 {
     public interface IUserInfoProvider
     {
-        string GetUserInfo(string name);
+        string GetUserCompany(string name);
     }
 }

@@ -18,7 +18,7 @@ namespace SolidApi.Logic.RentalAuthenticator
         public bool Authenticate(string user, string name)
         {
             var bookInfo = bookInfoProvider.GetBooksInfo(name);
-            var userInfo = userInfoProvider.GetUserInfo(user);
+            var userInfo = userInfoProvider.GetUserCompany(user);
             if (!string.IsNullOrWhiteSpace(bookInfo) && !string.IsNullOrWhiteSpace(userInfo))
             {
                 if (bookInfo.Contains(userInfo))

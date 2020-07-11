@@ -5,6 +5,7 @@ using SolidApi.Logic.RentalAuthenticator;
 using SolidApi.Logic.RentalAuthenticator.Interfaces;
 using SolidApi.Logic.TextAdministrator;
 using SolidApi.Logic.TextAdministrator.Interfaces;
+using SolidApi.Repository.Database;
 
 namespace SolidApi
 {
@@ -25,6 +26,10 @@ namespace SolidApi
             services.AddScoped<IMyLoggerFactory, MyLoggerFactory>();
             services.AddScoped<IMyLogger, ConsoleLogger>();
             services.AddScoped<IMyLogger, FileLogger>();
+            services.AddHttpClient();
+            services.AddScoped<IHttpClientWrapper, HttpClientWrapper>();
+
+            services.AddScoped<IUserRepository, UserRepository>();
 
             return services;
         }

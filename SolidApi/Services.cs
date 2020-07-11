@@ -8,6 +8,7 @@ namespace SolidApi
         {
             services.AddLogicServices();
 
+
             return services;
         }
     }
