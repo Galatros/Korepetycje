@@ -29,10 +29,23 @@ namespace SolidApi.Repository.Database
             // dbContext.SaveChangesAsync();
         }
 
+        public async Task<Book> GetBookForNameAsync(string name)
+        {
+   
+
+            return await dbContext.Books.Include(u => u.Company).AsNoTracking().FirstOrDefaultAsync(u => u.Tittle == name);
+
+        }
+
         public async Task Add(User user)
         {
             dbContext.Users.Add(user);
             await dbContext.SaveChangesAsync();
+        }
+
+        public async Task<Movie> GetMovieForNameAsync(string name)
+        {
+            return await dbContext.Movies.Include(u => u.Company).AsNoTracking().FirstOrDefaultAsync(u => u.Tittle == name);
         }
     }
 }

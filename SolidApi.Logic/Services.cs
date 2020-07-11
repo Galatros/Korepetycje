@@ -15,7 +15,9 @@ namespace SolidApi
         {
 
             services.AddScoped<IArtAuthenticator, BookAuthenticator>();
+            services.AddScoped<IArtAuthenticator, MovieAuthenticator>();
             services.AddScoped<IBookInfoProvider, BookInfoProvider>();
+            services.AddScoped<IMovieInfoProvider, MovieInfoProvider>();
             services.AddScoped<IUserAuthenticator, UserAuthenticator>();
             services.AddScoped<IUserInfoProvider, UserInfoProvider>();
             services.AddScoped<IMyFactory, MyFactory>();
