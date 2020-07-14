@@ -1,9 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SolidApi.Repository.Database.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace SolidApi.Repository.Database
@@ -27,14 +23,6 @@ namespace SolidApi.Repository.Database
 
             // AsNoTracking
             // dbContext.SaveChangesAsync();
-        }
-
-        public async Task<Book> GetBookForNameAsync(string name)
-        {
-   
-
-            return await dbContext.Books.Include(u => u.Company).AsNoTracking().FirstOrDefaultAsync(u => u.Tittle == name);
-
         }
 
         public async Task Add(User user)

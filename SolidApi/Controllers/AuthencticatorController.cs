@@ -21,7 +21,7 @@ namespace SolidApi.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var result = userAuthenticator.AuthenticateUser("Jan Kowalski", "movie", "Pan Wołodyjowski");
+            var result = userAuthenticator.AuthenticateUser("Jan Kowalski", "series", "Botoks");
             if (result)
                 return Ok();
             else

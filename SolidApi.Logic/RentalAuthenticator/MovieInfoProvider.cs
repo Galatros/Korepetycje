@@ -1,23 +1,20 @@
 ﻿using SolidApi.Logic.RentalAuthenticator.Interfaces;
 using SolidApi.Repository.Database;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace SolidApi.Logic.RentalAuthenticator
 {
     public class MovieInfoProvider : IMovieInfoProvider
     {
-        private readonly IUserRepository userRepository;
+        private readonly IMovieRepository movieRepository;
 
-        public MovieInfoProvider(IUserRepository userRepository)
+        public MovieInfoProvider(IMovieRepository movieRepository)
         {
-            this.userRepository = userRepository;
+            this.movieRepository = movieRepository;
         }
 
         public string GetMoviesInfo(string name)
         {
-            var movie = userRepository.GetMovieForNameAsync(name).Result;
+            var movie = movieRepository.GetMovieForNameAsync(name).Result;
             var comapny = movie.Company.Name;
             return comapny;
         }
