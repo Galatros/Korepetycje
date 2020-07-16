@@ -13,5 +13,7 @@ namespace SolidApi.Repository.Database.Entities
 
         [Key]
         public int Id { get; set; }
+
+        public IEnumerable<UserToCompany> UserToCompanies { get; set; }
     }
 }

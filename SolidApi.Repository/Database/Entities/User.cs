@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace SolidApi.Repository.Database.Entities
 {
@@ -11,5 +12,7 @@ namespace SolidApi.Repository.Database.Entities
         public string Name { get; set; }
 
         public Company Company { get; set; }
+
+        public IEnumerable<UserToCompany> UserToCompanies { get; set; }
     }
 }

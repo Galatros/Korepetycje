@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SolidApi.Repository.Database;
 
 namespace SolidApi.Repository.Data.Migrations
 {
     [DbContext(typeof(LibraryDbContext))]
-    partial class LibraryDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200714190328_AddManyToMany")]
+    partial class AddManyToMany
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -136,7 +138,7 @@ namespace SolidApi.Repository.Data.Migrations
 
                     b.HasIndex("CompanyId");
 
-                    b.ToTable("UserToCompanies");
+                    b.ToTable("UserToCompany");
                 });
 
             modelBuilder.Entity("SolidApi.Repository.Database.Entities.Book", b =>

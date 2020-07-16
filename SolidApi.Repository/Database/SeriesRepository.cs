@@ -1,8 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SolidApi.Repository.Database.Entities;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata;
 using System.Threading.Tasks;
 
 namespace SolidApi.Repository.Database
@@ -29,30 +26,23 @@ namespace SolidApi.Repository.Database
 
         private async Task LoadInitalizationData()
         {
-            if (dbContext.Series.Count() == 0)
+            if (!await dbContext.Series.AnyAsync().ConfigureAwait(false))
             {
                 //IList<Series> seriesList = new List<Series>();
 
-                Company companyitem = new Company();
-                companyitem.Name = "Fitness";
-                companyitem.Id = 2;
+                Company fitnes = await dbContext.Companies.FirstOrDefaultAsync(c => c.Id == 2).ConfigureAwait(false);
+                Company pomiarMet = await dbContext.Companies.FirstOrDefaultAsync(c => c.Id == 1).ConfigureAwait(false);
 
                 Series item = new Series
                 {
-                    Id = 1,
                     Tittle = "Pan Wołodyjowski",
-                    Company = companyitem
+                    Company = fitnes
                 };
-
-                Company companyitem2 = new Company();
-                companyitem2.Name = "PomiarMet";
-                companyitem2.Id = 1;
 
                 Series item2 = new Series
                 {
-                    Id = 2,
                     Tittle = "Botoks",
-                    Company = companyitem2
+                    Company = pomiarMet
                 };
 
 
